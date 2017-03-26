@@ -1,0 +1,24 @@
+import { USER_JOIN, USER_LEFT, USER_INFO} from '../actions/actions.jsx';
+
+const initialState = {
+    name: '',
+    avatar: ''
+};
+
+const UserInfo = (state = initialState, action) => {
+    switch(action.type) {
+
+        case USER_INFO:
+            console.log(action.user);
+            return {
+                state,
+                name: action.user.name,
+                avatar: action.user.avatar
+            };
+
+        default:
+            return state;
+    }
+};
+
+export default UserInfo;

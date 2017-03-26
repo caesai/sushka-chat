@@ -1,0 +1,198 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.chat-page {
+    width: 1024px;
+    margin: 0 auto;
+    border: 1px solid #e6e6e6;
+    position: relative;
+}
+
+.chat-window {
+    width: 800px;
+    border-left: 1px solid #e6e6e6;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.users-list {
+    position: relative;
+    left: 0;
+    width: 180px;
+    padding: 20px;
+    height: 84vh;
+}
+
+.users-ul {
+    list-style: none;
+    padding: 0;
+}
+
+.users-ul li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.chat-input {
+    padding: 20px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.message-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.message {
+    margin: 10px 0;
+    word-break: break-all;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.message p {
+    line-height: 10px;
+    font-weight: 100;
+}
+
+.chat-message {
+    width: 100%;
+    margin: 10px 0 40px 0;
+    clear: both;
+    display: table;
+}
+
+.message-input-avatar,
+.avatar-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background-color: #fff;
+}
+
+.message-input-avatar {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    float: left;
+}
+
+.message-block {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    padding: 0 60px 0 0px;
+}
+
+.message-block-avatar {
+    width: 60px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.message-time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #c1c1c1;
+}
+
+.form-block {
+    display: inline-block;
+    width: 600px;
+    text-align: right;
+}
+
+.form-block p  {
+    margin: 0;
+
+}
+
+.text-input {
+    position: relative;
+}
+
+.text-input .file-trigger,
+.text-input .emoji-trigger {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #afadad;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.text-input .file-trigger {
+    right: 35px;
+}
+
+.uploader {
+    display: none;
+}
+
+.text-input .fa:hover {
+    opacity: 1;
+}
+
+.emoji-container {
+    position: absolute;
+    z-index: -1;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    box-shadow: 1px 1px 0 #e6e6e6;
+    transition: 0.3s ease-out 0.1s;
+    opacity: 0;
+    top: -270px;
+    right: -50px;
+    padding: 10px;
+    width: 200px;
+    height: 250px;
+    text-align: center;
+}
+
+.emoji-container.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.message-textarea {
+    outline: none;
+    width: 100%;
+    height: 80px;
+    resize: none;
+    border: 1px solid #e6e6e6;
+    text-align: left;
+    overflow-y: auto;
+    border-radius: 3px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #78c604;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+#vk_auth {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
