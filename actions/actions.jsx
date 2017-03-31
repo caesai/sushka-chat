@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
+export const USERS_LIST = 'USERS_LIST';
 export const USER_JOIN = 'USER_JOIN';
 export const USER_INFO = 'USER_INFO';
 export const USER_LEFT = 'USER_LEFT';
@@ -8,6 +9,7 @@ export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const FILE_SEND = 'FILE_SEND';
 export const FILE_UPLOADED = 'FILE_UPLOADED';
 export const LOAD_INFO_FAIL = 'LOAD_INFO_FAIL';
+
 
 export function addMessage(message) {
     return {
@@ -21,6 +23,13 @@ export function receiveRawMessage(message) {
         type: RECEIVE_MESSAGE,
         message
     };
+}
+
+export function getUsersList(user){
+  return {
+    type: USERS_LIST,
+    user
+  }
 }
 
 export function userJoin (user) {

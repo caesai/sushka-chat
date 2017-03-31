@@ -9,7 +9,7 @@ const UserInfo = (state = initialState, action) => {
     switch(action.type) {
 
         case USER_INFO:
-            console.log(action.user);
+            // console.log(action.user);
             return {
                 state,
                 name: action.user.name,

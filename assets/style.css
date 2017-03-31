@@ -20,8 +20,7 @@ body {
 .users-list {
     position: relative;
     left: 0;
-    width: 180px;
-    padding: 20px;
+    width: 224px;
     height: 84vh;
 }
 
@@ -34,8 +33,16 @@ body {
     display: flex;
     align-items: center;
     margin: 10px 0;
+    cursor: pointer;
+    transition: 0.3s ease-out 0.1s;
+    padding: 15px;
 }
 
+.user-active,
+.users-ul li:hover {
+  background-color: rgba(106, 191, 251, 0.46);
+  color: #585858;
+}
 .chat-input {
     padding: 20px;
     border-top: 1px solid #e6e6e6;

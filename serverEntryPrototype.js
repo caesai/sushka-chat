@@ -21,42 +21,35 @@ var io = require('socket.io').listen(app.listen(port, function(){
     console.log('Server is listening on port: ' + port);
 }));
 
-var users = [];
+let currentUserName;
 
 io.on('connection', function(socket){
     socket.on('user:join', function(userInfo) {
-        socket.user = userInfo.name;
-        var userJoined = {
-            name: userInfo.name,
-            avatar: userInfo.avatar
-        };
-
-        users.push(userJoined);
-
-        io.emit('user:join', userJoined);
-        console.log(userInfo.name + ' has joined');
+        currentUserName = userInfo.name;
+        io.emit('user:join', userInfo);
+        console.log(currentUserName + ' has joined');
     });
 
 
     socket.on('disconnect',function(){
-        for(var i=0; i<users.length; i++) {
-            if(users[i].name == socket.user) {
-                console.log(socket.user + ' has left');
-                users.splice(users.indexOf(users[i]), 1);
-            }
-        }
-        io.emit('user:left', users);
+        // for(var i=0; i<users.length; i++) {
+        //     if(users[i].name == socket.user) {
+                console.log(currentUserName + ' has left');
+        //         users.splice(users.indexOf(users[i]), 1);
+        //     }
+        // }
+        io.emit('user:left', currentUserName);
     });
 
     socket.on('chat message', function(msg){
         io.emit('chat message', msg);
         console.log(msg.user + ': ' + msg.msg);
     });
-
-    socket.on('user:writing', function(userName) {
-        var writingMsg = userName + ' writing...';
-        io.emit('user:writing', userName);
-    });
+    //
+    // socket.on('user:writing', function(userName) {
+    //     var writingMsg = userName + ' writing...';
+    //     io.emit('user:writing', userName);
+    // });
 });
 
 app.post('/upload', busboy, function(req, res) {
