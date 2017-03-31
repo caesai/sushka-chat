@@ -1,4 +1,4 @@
-import { USER_JOIN, USER_LEFT, USER_INFO} from '../actions/actions.jsx';
+import { USER_JOIN, USER_LEFT, USER_INFO, USERS_LIST} from '../actions/actions.jsx';
 
 const initialState = {
     users: []
@@ -6,23 +6,24 @@ const initialState = {
 
 const UserStatus = (state = initialState, action) => {
     switch(action.type) {
+        case USERS_LIST:
+          return {
+            state,
+            users: action.user
+          }
 
         case USER_JOIN:
-            return {
-                state,
-                users: [...action.user]
-            };
+          return {
+            state,
+            users: [...state.users, action.user]
+          };
 
         case USER_LEFT:
-            console.log(action.user);
-
-            return {
-                state,
-                users: [...action.user]
-            };
+        
+          return state;
 
         default:
-            return state;
+          return state;
     }
 };
 

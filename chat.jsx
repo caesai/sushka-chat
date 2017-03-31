@@ -1,7 +1,7 @@
 import React from 'react';
-import MessageBox from './Chat/MessageBox.jsx';
-import MessageForm from './Chat/MessageForm.jsx';
-import UsersList from './Chat/UsersList.jsx';
+import MessageBox from './components/MessageBox.jsx';
+import MessageForm from './components/MessageForm.jsx';
+import UsersList from './components/UsersList.jsx';
 import * as actions from './actions/actions.jsx';
 import { connect } from 'react-redux';
 import store from './store/store.jsx';
@@ -19,19 +19,36 @@ const socket = io();
             avatar: 'img/images.png'
             // avatar: smth.photo
         };
+        let usersList = [
+          {
+            name: 'Josh Homme',
+            avatar: 'img/joshik.jpg'
+          },
+          {
+            name: 'Dima Akinsheen',
+            avatar: 'img/dima.jpg'
+          },
+          {
+            name: 'Anastasiya Gladkih',
+            avatar: 'img/nastya.jpg'
+          }
+        ]
         // document.getElementById('vk_auth').style.display = 'none';
+
         store.dispatch(actions.thisUserInfo(userInfo));
+        store.dispatch(actions.getUsersList(usersList));
+
         socket.emit('user:join', userInfo);
     // }
 // });
 
 socket.on('user:join', (user) => {
-    console.log(user);
     store.dispatch(actions.userJoin(user));
 });
 
 socket.on('user:left', (user) => {
-    console.log(user);
+  // let list = store.Userstatus.users;
+  console.log(store.getState().Userstatus);
     store.dispatch(actions.userLeft(user));
 });
 
@@ -41,26 +58,28 @@ socket.on('chat message', (msg) => {
 
 });
 
-let Chat = () => {
+export default class Chat extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {}
+  }
 
+  render(){
     let messages = [];
     let avatar = '';
     let users = [];
+      return (
+          <div>
+              <UsersList users={users} />
+              <div className="chat-window">
+                  <MessageBox messages={messages} />
+                  <div className="detecting-block"></div>
 
-    return (
-        <div>
-            <UsersList users={users} />
-            <div className="chat-window">
-                <MessageBox messages={messages} />
-                <div className="detecting-block"></div>
-
-                <div className="chat-input">
-                    <MessageForm avatar={avatar} />
-                </div>
-            </div>
-        </div>
-    );
+                  <div className="chat-input">
+                      <MessageForm avatar={avatar} />
+                  </div>
+              </div>
+          </div>
+      );
+    }
 };
-
-export default Chat;
-
