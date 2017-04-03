@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions.jsx';
 import store from '../store/store.jsx';
+import * as styles from './scss/MessageForm.scss';
 
 const socket = io();
 
@@ -14,8 +15,8 @@ let MessageForm = ({dispatch, avatar}) => {
     let emojiActive = false;
     return(
         <div className='message_form'>
-            <img src={avatar} className="message-input-avatar" alt=""/>
-            <div className="form-block">
+            <img src={avatar} className={styles.avatar} alt=""/>
+            <div className={styles.formBlock}>
                 <form encType="multipart/form-data"
                     action="/"
                     method="post"
@@ -32,9 +33,9 @@ let MessageForm = ({dispatch, avatar}) => {
                         }
                     }
                 >
-                    <div className="text-input">
+                    <div className={styles.textInput}>
                         <div
-                            className="message-textarea"
+                            className={styles.messageTextarea}
                             ref={node => {
                                 input = node
                             }}
@@ -54,7 +55,7 @@ let MessageForm = ({dispatch, avatar}) => {
                             }}
                         >
                         </div>
-                        <input className="uploader" type="file" name="uploads"
+                        <input className={styles.uploader} type="file" name="uploads"
                            ref={(node) => uploader = node}
                            onChange={(e) => {
                               var files = e.target.files;
@@ -64,21 +65,20 @@ let MessageForm = ({dispatch, avatar}) => {
                               )
                            }}
                         />
-                        <i className="fa fa-picture-o file-trigger" aria-hidden="true" onClick={()=>{
+                      <i className={'fa fa-picture-o ' + styles.fileTrigger} aria-hidden="true" onClick={()=>{
                             uploader.click();
                         }}>
                         </i>
-                        <i className="fa fa-smile-o emoji-trigger" aria-hidden="true" onClick={()=> {
-                            emojiCont.classList.toggle('active', !emojiActive);
+                        <i className={'fa fa-smile-o ' + styles.emojiTrigger} aria-hidden="true" onClick={()=> {
+                            emojiCont.classList.toggle(styles.active, !emojiActive);
                             emojiActive = !emojiActive;
                         }}>
                         </i>
-                        <div className="emoji-container" ref={(node) => emojiCont = node} >
-                            <h4>Эмодзи</h4>
+                        <div className={styles.emojiContainer} ref={(node) => emojiCont = node} >
                         </div>
                     </div>
                     <p>
-                        <button className="submit-btn" type="submit" ref={node => {
+                        <button className={styles.submitBtn} type="submit" ref={node => {
                             buttn = node
                         }}>
                             Отправить

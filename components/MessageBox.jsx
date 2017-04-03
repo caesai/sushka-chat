@@ -3,15 +3,16 @@ import Message from './Message.jsx';
 import Avatar from './Avatar.jsx';
 import { connect } from 'react-redux';
 import store from '../store/store.jsx';
+import * as styles from './scss/MessageBox.scss';
 
 let box;
 
 let MessageBox = ({messages}) => {
     return (
-        <div className="message-box" ref={ node => {box = node} } >
+        <div className={styles.messageBox} ref={ node => {box = node} } >
             {messages.map((message, key) =>
-                <div className="chat-message" key={key}>
-                    <div className="message-block-avatar">
+                <div className={styles.chatMessage} key={key}>
+                    <div className={styles.messageBlockAvatar}>
                         <Avatar
                             avatar={message.avatar}
                         />

@@ -1,51 +1,33 @@
 var webpack = require('webpack');
 var path = require('path');
-var buildPath = path.resolve('./assets');
+var buildPath = path.resolve(__dirname, 'assets');
 var fs = require('fs');
-
-var commonLoaders = [
-    { test: /\.js$/,
-
-        loaders: [
-            'react-hot',
-            'babel-loader'
-        ]
-    }
-];
-
-var nodeModules = {};
-fs.readdirSync('node_modules')
-    .filter(function(x) {
-        return ['.bin'].indexOf(x) === -1;
-    })
-    .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs ' + mod;
-    });
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractSCSS = new ExtractTextPlugin('[name].css');
 
 module.exports =
 {
-    // Makes sure errors in console map to the correct file
-    // and line number
     name: 'browser',
     devtool: 'eval',
-    entry: [
-        './index.jsx'
-    ],
+    context: path.join(__dirname, './'),
+    entry: './index.jsx',
     output: {
         path: buildPath,
-        filename: '[name].js',
+        filename: 'bundle.js',
         // Everything related to Webpack should go through a build path,
         // localhost:3000/build. That makes proxying easier to handle
         publicPath: 'http://localhost:8081/assets/'
     },
 
-    extensions: [
-        '',
-        '.jsx', '.js',
-        '.json',
-        '.html',
-        '.css', '.styl', '.scss', '.sass'
-    ],
+    resolve: {
+        extensions: [
+            '.jsx', '.js',
+            '.json',
+            '.html',
+            '.css', '.scss'
+        ]
+    },
+
     module: {
 
         loaders: [
@@ -58,22 +40,27 @@ module.exports =
                 exclude: /node_modules/
             },
 
-            ///app\/.*\.json$/
-            { test:  /\.json$/, loader: 'json-loader' },
+            {
+                test: /\.scss$/,
+                loaders: extractSCSS.extract(["css-loader?sourceMap&minimize&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]","resolve-url-loader","sass-loader?sourceMap"])
+            },
+            // {
+            //     test: /\.css$/,
+            //     loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+            // },
 
-            // Styles
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.s(a|c)ss$/, loader: 'style!css?localIdentName=[path][name]---[local]---[hash:base64:5]!postcss!sass' },
-
-            // Fonts
+            // // Fonts
             { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
-
-        ],
-
-        plugins: [
-            new webpack.HotModuleReplacementPlugin(),
-            new webpack.NoErrorsPlugin()
+            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
         ]
-    }
+    },
+
+    plugins: [
+      extractSCSS,
+      // new webpack.ProvidePlugin({
+      // }),
+      // new webpack.HotModuleReplacementPlugin(),
+      // new webpack.NoErrorsPlugin()
+    ]
+
 };

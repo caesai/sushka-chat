@@ -1,0 +1,91 @@
+.avatar {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  float: left;
+}
+
+
+.formBlock {
+  display: inline-block;
+  width: 600px;
+  text-align: right;
+
+  p  {
+      margin: 0;
+  }
+}
+
+.textInput {
+  position: relative;
+
+  .fileTrigger,
+  .emojiTrigger {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #afadad;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  .fileTrigger {
+    right: 35px;
+  }
+
+  .fa{
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.uploader {
+    display: none;
+}
+
+.emojiContainer {
+    position: absolute;
+    z-index: -1;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    box-shadow: 1px 1px 0 #e6e6e6;
+    transition: 0.3s ease-out 0.1s;
+    opacity: 0;
+    top: -270px;
+    right: -50px;
+    padding: 10px;
+    width: 200px;
+    height: 250px;
+    text-align: center;
+
+    .active {
+      opacity: 1;
+      z-index: 1;
+    }
+}
+
+.messageTextarea {
+    outline: none;
+    width: 100%;
+    height: 80px;
+    resize: none;
+    border: 1px solid #e6e6e6;
+    text-align: left;
+    overflow-y: auto;
+    border-radius: 3px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.submitBtn {
+    background-color: #78c604;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 20px;
+    border: 0;
+    cursor: pointer;
+}

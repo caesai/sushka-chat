@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import store from '../store/store.jsx';
-
+import * as styles from './scss/UsersList.scss';
 let active= false;
 
 
@@ -12,18 +12,20 @@ class UsersList extends React.Component {
     this.toggleUser = this.toggleUser.bind(this);
   }
   componentDidMount () {
-
   }
   render(){
       let {users} = this.props;
       return (
 
-          <div className='users-list'>
-              <ul className="users-ul">
+          <div className={styles.usersList}>
+              <ul className={styles.usersUl}>
                   {users.map((user, key) =>
 
-                      <li key={key} onClick={this.toggleUser}>
-                          <img src={user.avatar} className="avatar-pic" />
+                      <li key={key}
+                          onClick={this.toggleUser}
+                          data-active={false}
+                        >
+                          <img src={user.avatar} className={styles.avatar} />
                           {user.name}
                       </li>
                   )}
@@ -34,17 +36,17 @@ class UsersList extends React.Component {
 
     /* FUNCTIONS */
     toggleUser (e) {
-      let listItem = e.currentTarget;
-      let activeListItem = document.querySelector('.user-active');
-
-      if (activeListItem) {
-        activeListItem.dataset.active = false;
-        activeListItem.className = '';
-      }
-
-      listItem.className = 'user-active';
+        let listItem = e.currentTarget;
+        let userActive = styles.userActive;
+        let activeListItem = document.querySelector('.' + userActive);
+        if (activeListItem) {
+          activeListItem.classList.toggle(userActive);
+        }
+        listItem.classList.toggle(userActive);
     }
 };
+
+
 
 UsersList.propTypes = {
     users: PropTypes.array.isRequired
