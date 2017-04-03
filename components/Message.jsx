@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Linked from './Linked.jsx';
 import { connect } from 'react-redux';
+import * as styles from './scss/Message.scss';
 
 let urlRegex = /(https?:\/\/[^\s]+)/g;
 
@@ -8,7 +9,7 @@ let Message = ({message}) => {
     let parsedMsg = message.replace(/(<([^>]+)>)/ig,";");
     let msgArray = parsedMsg.split(";");
     return (
-        <div className="message" >
+        <div className={styles.message} >
             {msgArray.map((line, key) =>
                     <p key={key}>
                         {line.match(urlRegex) ?

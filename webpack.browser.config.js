@@ -48,6 +48,9 @@ module.exports =
         '.html',
         '.css', '.styl', '.scss', '.sass'
     ],
+    devServer: {
+    	hot: true
+    }
     module: {
 
         loaders: [

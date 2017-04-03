@@ -6,9 +6,9 @@ import * as actions from './actions/actions.jsx';
 import { connect } from 'react-redux';
 import store from './store/store.jsx';
 import io from 'socket.io-client';
+import * as styles from './scss/main.scss';
 
 const socket = io();
-
 // VK.Widgets.Auth("vk_auth", {
     // width: "200px",
     // onAuth: function(smth) {
@@ -69,13 +69,13 @@ export default class Chat extends React.Component {
     let avatar = '';
     let users = [];
       return (
-          <div>
+          <div className={styles.chatPage}>
               <UsersList users={users} />
-              <div className="chat-window">
+              <div className={styles.chatWindow}>
                   <MessageBox messages={messages} />
                   <div className="detecting-block"></div>
 
-                  <div className="chat-input">
+                  <div className={styles.chatInput}>
                       <MessageForm avatar={avatar} />
                   </div>
               </div>

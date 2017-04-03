@@ -1,0 +1,26 @@
+.messageBox {
+    background-color: #f9f9f9;
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.chatMessage {
+    width: 100%;
+    margin: 10px 0 40px 0;
+    clear: both;
+    display: table;
+}
+
+.messageBlock {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    padding: 0 60px 0 0px;
+}
+
+.messageBlockAvatar {
+    width: 60px;
+    display: table-cell;
+    vertical-align: top;
+}

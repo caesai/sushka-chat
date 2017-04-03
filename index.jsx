@@ -1,8 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom'
-import Chat from './chat.jsx';
+import Chat from './App.jsx';
 import { Provider } from 'react-redux';
 import store from './store/store.jsx';
+import * as style from './scss/main.scss';
 
 console.log(store.getState());
 
