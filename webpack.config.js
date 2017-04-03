@@ -54,12 +54,14 @@ module.exports =
             { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
         ]
     },
-
+    devServer: {
+      hot: true
+    },
     plugins: [
       extractSCSS,
       // new webpack.ProvidePlugin({
       // }),
-      // new webpack.HotModuleReplacementPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
       // new webpack.NoErrorsPlugin()
     ]
 
