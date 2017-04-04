@@ -3,33 +3,33 @@ body {
 }
 
 .chatPage {
-    width: 1024px;
-    margin: 0 auto;
-    border: 1px solid #e6e6e6;
-    position: relative;
+  width: 1280px;
+  margin: 0 auto;
+  border: 1px solid #cacaca;
+  position: relative;
 }
 
 .chatWindow {
-    width: 800px;
-    border-left: 1px solid #e6e6e6;
-    position: absolute;
-    right: 0;
-    top: 0;
+  width: 600px;
+  border-left: 1px solid #cacaca;
+  display: inline-block;
+  right: 0;
+  top: 0;
 }
 
 .chatInput {
-    padding: 20px;
-    border-top: 1px solid #e6e6e6;
+  padding: 20px;
+  border-top: 1px solid #cacaca;
 }
 
 #vk_auth {
-    position: fixed;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }

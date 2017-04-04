@@ -9,6 +9,7 @@ export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const FILE_SEND = 'FILE_SEND';
 export const FILE_UPLOADED = 'FILE_UPLOADED';
 export const LOAD_INFO_FAIL = 'LOAD_INFO_FAIL';
+export const CHOOSE_USER = 'CHOOSE_USER';
 
 
 export function addMessage(message) {
@@ -81,5 +82,12 @@ export function fetchFile(file) {
         response
       })
       .then(json => dispatch(recieveFile(file)))
+  }
+}
+
+export function pickProfile(profileId) {
+  return {
+    type: CHOOSE_USER,
+    profileId
   }
 }
