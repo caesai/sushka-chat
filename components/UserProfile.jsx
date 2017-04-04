@@ -13,13 +13,11 @@ class UserProfile extends React.Component {
   }
   render() {
     let {chosenUser} = this.props;
-    console.log(chosenUser);
     return (
       <div className={styles.userProfile}>
         <div className={chosenUser ? styles.infoBlockActive : styles.infoBlock}>
           {chosenUser ?
             <div>
-              <p>{chosenUser.name}</p>
               <button className={styles.accountBtn + ' ' + styles.active}
                   onClick={this.accountBtnClicked}
                   data-account='true'>

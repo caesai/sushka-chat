@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -7,19 +11,6 @@ body {
   margin: 0 auto;
   border: 1px solid #cacaca;
   position: relative;
-}
-
-.chatWindow {
-  width: 600px;
-  border-left: 1px solid #cacaca;
-  display: inline-block;
-  right: 0;
-  top: 0;
-}
-
-.chatInput {
-  padding: 20px;
-  border-top: 1px solid #cacaca;
 }
 
 #vk_auth {

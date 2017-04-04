@@ -1,8 +1,9 @@
-import { USER_JOIN, USER_LEFT, USER_INFO, USERS_LIST, CHOOSE_USER} from '../actions/actions.jsx';
+import { USER_JOIN, USER_LEFT, USER_INFO, USERS_LIST, CHOOSE_USER, DELETE_USER, START_CHAT, END_CHAT} from '../actions/actions.jsx';
 
 const initialState = {
     users: [],
-    chosenUser: {}
+    chosenUser: {},
+    chat: false
 };
 
 const UserStatus = (state = initialState, action) => {
@@ -35,7 +36,39 @@ const UserStatus = (state = initialState, action) => {
 
         return {
           users: [...state.users],
-          chosenUser: chosenUser
+          chosenUser: chosenUser,
+          chat: state.chat
+        };
+
+      case DELETE_USER:
+        let deletedUser = action.userId;
+        let list = state.users;
+
+        for (var idx in list) {
+
+          if (list[idx].id == deletedUser){
+            list.splice(idx, 1);
+          }
+        }
+
+        return {
+          users: [...list],
+          chosenUser: {},
+          chat: false
+        };
+
+      case START_CHAT:
+        return {
+          users: [...state.users],
+          chosenUser: state.chosenUser,
+          chat: true
+        };
+
+      case END_CHAT:
+        return {
+          users: [...state.users],
+          chosenUser: state.chosenUser,
+          chat: false
         };
 
       default:

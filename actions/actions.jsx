@@ -10,6 +10,9 @@ export const FILE_SEND = 'FILE_SEND';
 export const FILE_UPLOADED = 'FILE_UPLOADED';
 export const LOAD_INFO_FAIL = 'LOAD_INFO_FAIL';
 export const CHOOSE_USER = 'CHOOSE_USER';
+export const START_CHAT = 'START_CHAT';
+export const END_CHAT = 'END_CHAT';
+export const DELETE_USER = 'DELETE_USER';
 
 
 export function addMessage(message) {
@@ -89,5 +92,24 @@ export function pickProfile(profileId) {
   return {
     type: CHOOSE_USER,
     profileId
+  }
+}
+
+export function openChat() {
+  return {
+    type: START_CHAT
+  }
+}
+
+export function closeChat() {
+  return {
+    type: END_CHAT
+  }
+}
+
+export function deleteUser(userId) {
+  return {
+    type: DELETE_USER,
+    userId
   }
 }

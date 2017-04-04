@@ -1,0 +1,58 @@
+.mainBox {
+  width: 600px;
+  border-left: 1px solid #cacaca;
+  display: inline-block;
+  right: 0;
+  top: 0;
+  padding: 20px;
+}
+
+.userName {
+  border-bottom: 1px solid #cacaca;
+  padding-bottom: 10px;
+  font-weight: 100;
+
+  span {
+    color: #cacaca;
+    font-size: 12px;
+    display: block;
+    margin: 5px 0;
+  }
+}
+
+.chatBlock {
+  display: none;
+  position: relative;
+
+  &.active {
+    display: block;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s ease-out 0.1s;
+  color: #000;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.chatInput {
+  padding: 20px;
+  border-top: 1px solid #cacaca;
+}
+
+.infoBlock {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
