@@ -1,6 +1,5 @@
 import React from 'react';
-import MessageBox from './components/MessageBox.jsx';
-import MessageForm from './components/MessageForm.jsx';
+import MainBox from './components/MainBox.jsx';
 import UsersList from './components/UsersList.jsx';
 import UserProfile from './components/UserProfile.jsx';
 import * as actions from './actions/actions.jsx';
@@ -17,9 +16,10 @@ const socket = io();
         let userInfo = {
             // name: smth.first_name,
             // avatar: smth.photo
+            id: 1,
             name: "Cas",
             avatar: 'img/images.png',
-            id: 1,
+            status: 'offline',
             account: [
               {
                id: 12423523,
@@ -35,9 +35,10 @@ const socket = io();
         };
         let usersList = [
           {
+            id: 2,
             name: 'Josh Homme',
             avatar: 'img/joshik.jpg',
-            id: 2,
+            status: 'offline',
             account: [
               {
                 id: 634634234,
@@ -56,9 +57,10 @@ const socket = io();
             ]
           },
           {
+            id: 3,
             name: 'Dima Akinsheen',
             avatar: 'img/dima.jpg',
-            id: 3,
+            status: 'offline',
             account: [
               {
                 id: 562456324,
@@ -85,9 +87,10 @@ const socket = io();
             ]
           },
           {
+            id: 4,
             name: 'Anastasiya Gladkih',
             avatar: 'img/nastya.jpg',
-            id: 4,
+            status: 'offline',
             account: [
               {
                 id: 8909808976,
@@ -116,13 +119,11 @@ const socket = io();
 // });
 
 socket.on('user:join', (user) => {
-    store.dispatch(actions.userJoin(user));
+  store.dispatch(actions.userJoin(user));
 });
 
 socket.on('user:left', (user) => {
-  // let list = store.Userstatus.users;
-  console.log(store.getState().Userstatus);
-    store.dispatch(actions.userLeft(user));
+  store.dispatch(actions.userLeft(user));
 });
 
 socket.on('chat message', (msg) => {
@@ -138,23 +139,15 @@ export default class Chat extends React.Component {
   }
 
   render(){
-    let messages = [];
-    let avatar = '';
     let users = [];
     let chosenUser = {};
+    let chat = false;
     return (
-        <div className={styles.chatPage}>
-            <UsersList users={users} />
-            <div className={styles.chatWindow}>
-                <MessageBox messages={messages} />
-                <div className="detecting-block"></div>
-
-                <div className={styles.chatInput}>
-                    <MessageForm avatar={avatar} />
-                </div>
-            </div>
-            <UserProfile chosenUser={chosenUser} />
-        </div>
+      <div className={styles.chatPage}>
+        <UsersList users={users} />
+        <MainBox chat={chat}/>
+        <UserProfile chosenUser={chosenUser} />
+      </div>
     );
   }
 };

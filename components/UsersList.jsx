@@ -9,17 +9,10 @@ let active= false;
 class UsersList extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      users: []
-    }
+
     this.toggleUser = this.toggleUser.bind(this);
   }
   componentWillReceiveProps() {
-    // let {users} = this.props;
-    // console.log(users);
-    // this.setState({
-    //   users: users
-    // })
   }
   render(){
       let {users} = this.props;
@@ -39,9 +32,15 @@ class UsersList extends React.Component {
 
                         <div className={styles.userMenu + ' menu' + key}>
                           <ul>
-                            <li>Написать сообщение</li>
+                            <li onClick={(e) => {
+                                  store.dispatch(actions.openChat());
+                                }
+                              }>Написать сообщение</li>
                             <li>Изменить</li>
-                            <li>Удалить</li>
+                            <li onClick={(e) => {
+                                let userId = store.getState().UserStatus.chosenUser.id;
+                                store.dispatch(actions.deleteUser(userId));
+                              }}>Удалить</li>
                           </ul>
                         </div>
                         <i className={"fa fa-angle-down " + styles.arrow}
@@ -88,8 +87,6 @@ class UsersList extends React.Component {
         store.dispatch(actions.pickProfile(userId));
     }
 };
-
-
 
 UsersList.propTypes = {
     users: PropTypes.array.isRequired
