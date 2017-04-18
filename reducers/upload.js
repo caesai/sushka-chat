@@ -1,4 +1,4 @@
-import { FILE_SEND, FILE_UPLOADED, LOAD_INFO_FAIL} from '../actions/actions.jsx';
+import { FILE_SEND, FILE_UPLOADED, LOAD_INFO_FAIL} from '../actions/actions';
 
 const defaultState = { loading: false, file: null, lastUpdate: null };
 

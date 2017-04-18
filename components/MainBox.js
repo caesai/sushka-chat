@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import store from '../store/store.jsx';
-import * as actions from '../actions/actions.jsx';
-import MessageBox from './MessageBox.jsx';
-import MessageForm from './MessageForm.jsx';
-import InfoBlock from './InfoBlock.jsx';
+import store from '../store/store';
+import * as actions from '../actions/actions';
+import MessageBox from './MessageBox';
+import MessageForm from './MessageForm';
+import InfoBlock from './InfoBlock';
 import * as styles from './scss/MainBox.scss';
 
 class MainBox extends React.Component {
@@ -18,15 +18,10 @@ class MainBox extends React.Component {
     console.log(chat);
     return (
       <div className={styles.mainBox}>
-        <div className={styles.infoBlock + ' ' + (chat ? null : styles.active)}>
+        <div className={styles.infoBlock}>
           <InfoBlock chosenUser={chosenUser} />
         </div>
-        <div className={styles.chatBlock + ' ' + (chat ? styles.active : null)}>
-          <i className={"fa fa-times " + styles.closeBtn}
-             aria-hidden="true"
-             onClick={(e) => {
-               store.dispatch(actions.closeChat())
-             }}></i>
+        <div className={styles.chatBlock}>
 
           <MessageBox messages={messages} />
           <div className={styles.chatInput}>

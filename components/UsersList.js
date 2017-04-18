@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import store from '../store/store.jsx';
-import * as actions from '../actions/actions.jsx';
+import store from '../store/store';
+import * as actions from '../actions/actions';
 import * as styles from './scss/UsersList.scss';
 let active= false;
 

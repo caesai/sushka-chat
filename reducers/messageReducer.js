@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, RECEIVE_MESSAGE } from '../actions/actions.jsx';
+import { ADD_MESSAGE, RECEIVE_MESSAGE } from '../actions/actions';
 
 const initialState = {
     messages: []
@@ -26,4 +26,3 @@ export default function MessageReducer (state = initialState, action) {
     }
 
 };
-

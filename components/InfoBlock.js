@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import store from '../store/store.jsx';
+import store from '../store/store';
 import * as styles from './scss/MainBox.scss';
 
 

@@ -10,7 +10,7 @@ module.exports =
     name: 'browser',
     devtool: 'eval',
     context: path.join(__dirname, './'),
-    entry: './index.jsx',
+    entry: './index.js',
     output: {
         path: buildPath,
         filename: 'bundle.js',

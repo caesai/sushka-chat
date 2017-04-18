@@ -1,4 +1,4 @@
-import { USER_JOIN, USER_LEFT, USER_INFO} from '../actions/actions.jsx';
+import { USER_JOIN, USER_LEFT, USER_INFO} from '../actions/actions';
 
 const initialState = {
     name: '',
