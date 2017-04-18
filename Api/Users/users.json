@@ -1,0 +1,78 @@
+{
+  "usersList": [
+    {
+      "id": 2,
+      "name": "Josh Homme",
+      "avatar": "img/joshik.jpg",
+      "status": "offline",
+      "account": [
+        {
+          "id": 634634234,
+          "sum": 234555
+        },
+        {
+          "id": 35636436,
+          "sum": 235424562
+        }
+      ],
+      "deposit": [
+        {
+          "id": 121423564,
+          "sum": 1232131
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dima Akinsheen",
+      "avatar": "img/dima.jpg",
+      "status": "offline",
+      "account": [
+        {
+          "id": 562456324,
+          "sum": 133
+        },
+        {
+          "id": 123466734,
+          "sum": 12535234
+        },
+        {
+          "id": 43634634634,
+          "sum": 35352.2353
+        }
+      ],
+      "deposit": [
+        {
+          "id": 3523523,
+          "sum": 12312412
+        },
+        {
+          "id": 564563473,
+          "sum": 12312.656
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Anastasiya Gladkih",
+      "avatar": "img/nastya.jpg",
+      "status": "offline",
+      "account": [
+        {
+          "id": 8909808976,
+          "sum": 46546.34
+        },
+        {
+          "id": 1232526464,
+          "sum": 77886
+        }
+      ],
+      "deposit": [
+        {
+          "id": 90038932,
+          "sum": 6788
+        }
+      ]
+    }
+  ]
+}

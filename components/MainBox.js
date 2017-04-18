@@ -7,15 +7,12 @@ import MessageForm from './MessageForm';
 import InfoBlock from './InfoBlock';
 import * as styles from './scss/MainBox.scss';
 
-class MainBox extends React.Component {
+export default class MainBox extends React.Component {
 
   render() {
     let messages = [];
     let avatar = '';
     let chosenUser = {};
-    let {chat} = this.props;
-
-    console.log(chat);
     return (
       <div className={styles.mainBox}>
         <div className={styles.infoBlock}>
@@ -34,14 +31,4 @@ class MainBox extends React.Component {
   }
 }
 
-MainBox.propTypes = {
-    chat: PropTypes.boolean
-};
-
-const mapStateToProps = function(store) {
-    return {
-        chat:  store.UserStatus.chat
-    };
-};
-
-export default connect(mapStateToProps)(MainBox);
+// export default connect()(MainBox);
