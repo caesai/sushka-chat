@@ -22,7 +22,7 @@ class MessageBox extends React.Component {
                         />
                     </div>
                     <Message
-                        message={message}
+                        message={message.text}
                     />
                 </div>
             )}

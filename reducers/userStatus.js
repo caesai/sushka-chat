@@ -11,16 +11,14 @@ const UserStatus = (state = initialState, action) => {
       case USERS_LIST:
         return {
           state,
-          users: action.user
+          users: [...action.users]
         }
 
       case USER_JOIN:
-      return state;
-      
-        // return {
-        //   state,
-        //   users: [...state.users, action.user]
-        // };
+      return {
+        state,
+        users: [...state.users, action.user]
+      };
 
       case USER_LEFT:
         return state;

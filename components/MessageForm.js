@@ -5,11 +5,7 @@ import * as actions from '../actions/actions';
 import store from '../store/store';
 import * as styles from './scss/MessageForm.scss';
 
-// const socket = io();
-
-export default class MessageForm extends React.Component {
-
-  // let emojiActive = false;
+class MessageForm extends React.Component {
   render() {
     let buttn;
     let input;
@@ -32,7 +28,11 @@ export default class MessageForm extends React.Component {
                     //     'avatar': avatar,
                     //     'msg' : input.innerHTML
                     // });
-                    store.dispatch(actions.addMessage(input.innerHTML));
+                    store.dispatch(actions.addMessage({
+                        avatar: avatar,
+                        text: input.innerHTML
+                      })
+                    );
                     input.innerHTML = '';
                     }
                 }
@@ -100,17 +100,17 @@ export default class MessageForm extends React.Component {
       </div>
     );
   }
+}
+
+const mapStateToProps = function(store) {
+    return {
+        avatar: store.UserInfo.avatar
+    };
 };
 
-// const mapStateToProps = function(store) {
-//     return {
-//         avatar: store.UserInfo.avatar
-//     };
-// };
-//
-// MessageForm = connect(mapStateToProps,state => ({
-//     info: state.info
-// }))(MessageForm);
+MessageForm = connect(mapStateToProps,state => ({
+    info: state.info
+}))(MessageForm);
 
 
-// export default MessageForm;
+export default MessageForm;

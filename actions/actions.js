@@ -24,9 +24,13 @@ socket.onclose = function() {
   console.log("Соединение закрыто.");
 };
 
-socket.onmessage = function(event) {
-  console.log("Сообщение " + event.data);
-  receiveMessage(event.data);
+socket.onmessage = function(event, list) {
+  // let usersJson = JSON.parse(event.data);
+  // if (usersJson.usersList) {
+    // getUsersList(usersJson.usersList);
+  // } else {
+    receiveMessage(event.data);
+  // }
 };
 
 socket.onerror = function(error) {
@@ -34,7 +38,6 @@ socket.onerror = function(error) {
 };
 
 export function userJoin (user) {
-
   return {
       type: USER_JOIN,
       user
@@ -64,16 +67,14 @@ export function receiveMessage(message) {
     };
 }
 
-export function getUsersList(user){
+export function getUsersList(users){
   return {
     type: USERS_LIST,
-    user
+    users
   }
 }
 
-
-
-export function thisUserInfo (user) {
+export function userInfo (user) {
     return {
         type: USER_INFO,
         user

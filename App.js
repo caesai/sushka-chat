@@ -31,6 +31,7 @@ let userInfo = {
 };
 
 store.dispatch(actions.userJoin());
+store.dispatch(actions.userInfo(userInfo));
 
 
 export default class Chat extends React.Component {
@@ -43,7 +44,7 @@ export default class Chat extends React.Component {
     let users = [];
     return (
       <div className={styles.chatPage}>
-        <UsersList users={users} />
+        // <UsersList users={users} />
         <MainBox />
       </div>
     );

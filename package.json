@@ -56,7 +56,7 @@
   "scripts": {
     "FIXFIX": "webpack --progress --profile --colors --display-error-details --display-cached",
     "start": "parallelshell 'webpack-dev-server --colors --progress --hot --port 8081' 'node serverEntryPrototype.js'",
-    "dev": "parallelshell 'webpack-dev-server --colors --progress --hot --port 8081' 'node newserver.js'"
+    "dev": "parallelshell 'webpack-dev-server --colors --progress --hot --port 8081' 'node ./Api/newserver.js'"
   },
   "author": "sushkazzlo",
   "license": "ISC"
