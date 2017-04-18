@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import Message from './Message.jsx';
-import Avatar from './Avatar.jsx';
+import Message from './Message';
+import Avatar from './Avatar';
 import { connect } from 'react-redux';
-import store from '../store/store.jsx';
+import store from '../store/store';
 import * as styles from './scss/MessageBox.scss';
 
 let box;

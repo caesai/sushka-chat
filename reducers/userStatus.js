@@ -1,4 +1,4 @@
-import { USER_JOIN, USER_LEFT, USER_INFO, USERS_LIST, CHOOSE_USER, DELETE_USER, START_CHAT, END_CHAT} from '../actions/actions.jsx';
+import { USER_JOIN, USER_LEFT, USER_INFO, USERS_LIST, CHOOSE_USER, DELETE_USER, START_CHAT, END_CHAT} from '../actions/actions';
 
 const initialState = {
     users: [],

@@ -5,6 +5,7 @@
   right: 0;
   top: 0;
   padding: 20px;
+  position: relative;
 }
 
 .userName {
@@ -21,12 +22,7 @@
 }
 
 .chatBlock {
-  display: none;
   position: relative;
-
-  &.active {
-    display: block;
-  }
 }
 
 .closeBtn {
@@ -50,9 +46,8 @@
 }
 
 .infoBlock {
-  display: none;
-
-  &.active {
-    display: block;
-  }
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 10px;
 }

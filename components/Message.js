@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Linked from './Linked.jsx';
+import Linked from './Linked';
 import { connect } from 'react-redux';
 import * as styles from './scss/Message.scss';
 

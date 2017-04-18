@@ -1,10 +1,10 @@
 import React from 'react';
-import MainBox from './components/MainBox.jsx';
-import UsersList from './components/UsersList.jsx';
-import UserProfile from './components/UserProfile.jsx';
-import * as actions from './actions/actions.jsx';
+import MainBox from './components/MainBox';
+import UsersList from './components/UsersList';
+import UserProfile from './components/UserProfile';
+import * as actions from './actions/actions';
 import { connect } from 'react-redux';
-import store from './store/store.jsx';
+import store from './store/store';
 import io from 'socket.io-client';
 import * as styles from './scss/main.scss';
 
@@ -140,13 +140,11 @@ export default class Chat extends React.Component {
 
   render(){
     let users = [];
-    let chosenUser = {};
     let chat = false;
     return (
       <div className={styles.chatPage}>
         <UsersList users={users} />
         <MainBox chat={chat}/>
-        <UserProfile chosenUser={chosenUser} />
       </div>
     );
   }
