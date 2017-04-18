@@ -14,15 +14,50 @@ export const START_CHAT = 'START_CHAT';
 export const END_CHAT = 'END_CHAT';
 export const DELETE_USER = 'DELETE_USER';
 
+const socket = new WebSocket("ws://localhost:8080/ws", ["soap", "wamp"]);
 
-export function addMessage(message) {
-    return {
-        type: ADD_MESSAGE,
-        message
-    };
+socket.onopen = function() {
+  console.log("Соединение установлено.");
+};
+
+socket.onclose = function() {
+  console.log("Соединение закрыто.");
+};
+
+socket.onmessage = function(event) {
+  console.log("Сообщение " + event.data);
+  receiveMessage(event.data);
+};
+
+socket.onerror = function(error) {
+  alert("Ошибка " + error.message);
+};
+
+export function userJoin (user) {
+
+  return {
+      type: USER_JOIN,
+      user
+  }
 }
 
-export function receiveRawMessage(message) {
+export function userLeft (user) {
+
+  return {
+      type: USER_LEFT,
+      user
+  }
+}
+
+export function addMessage(message) {
+  socket.send(message);
+  return {
+      type: ADD_MESSAGE,
+      message
+  };
+}
+
+export function receiveMessage(message) {
     return {
         type: RECEIVE_MESSAGE,
         message
@@ -36,23 +71,11 @@ export function getUsersList(user){
   }
 }
 
-export function userJoin (user) {
-    return {
-        type: USER_JOIN,
-        user
-    }
-}
+
 
 export function thisUserInfo (user) {
     return {
         type: USER_INFO,
-        user
-    }
-}
-
-export function userLeft (user) {
-    return {
-        type: USER_LEFT,
         user
     }
 }

@@ -5,9 +5,13 @@ import { connect } from 'react-redux';
 import store from '../store/store';
 import * as styles from './scss/MessageBox.scss';
 
-let box;
-
-let MessageBox = ({messages}) => {
+class MessageBox extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    let box;
+    let {messages} = this.props;
     return (
         <div className={styles.messageBox} ref={ node => {box = node} } >
             {messages.map((message, key) =>
@@ -18,30 +22,17 @@ let MessageBox = ({messages}) => {
                         />
                     </div>
                     <Message
-                        message={message.msg}
+                        message={message}
                     />
                 </div>
             )}
         </div>
     );
-};
+  }
+}
 
-MessageBox.propTypes = {
-    messages: PropTypes.arrayOf(PropTypes.shape({
-        message: PropTypes.array.isRequired
-    }).isRequired).isRequired
-};
+const mapStateToProps = (state) => ({
+  messages: state.MessageReducer.messages
+});
 
-const mapStateToProps = function(store) {
-    if (box) {
-        box.scrollTop = box.scrollHeight;
-    }
-    return {
-        messages: store.MessageReducer.messages,
-        avatar: store.MessageReducer.avatar
-    };
-};
-
-MessageBox = connect(mapStateToProps)(MessageBox);
-
-export default MessageBox;
+export default connect(mapStateToProps)(MessageBox);
