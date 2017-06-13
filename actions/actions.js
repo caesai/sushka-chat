@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
+export const LOG_IN = 'LOG_IN';
 export const USERS_LIST = 'USERS_LIST';
 export const USER_JOIN = 'USER_JOIN';
 export const USER_INFO = 'USER_INFO';
@@ -14,28 +15,35 @@ export const START_CHAT = 'START_CHAT';
 export const END_CHAT = 'END_CHAT';
 export const DELETE_USER = 'DELETE_USER';
 
-const socket = new WebSocket("ws://localhost:8080/ws", ["soap", "wamp"]);
+// const socket = new WebSocket("ws://localhost:8080/ws", ["soap", "wamp"]);
+//
+// socket.onopen = function() {
+//   console.log("Соединение установлено.");
+// };
+//
+// socket.onclose = function() {
+//   console.log("Соединение закрыто.");
+// };
+//
+// socket.onmessage = function(event, list) {
+//   // let usersJson = JSON.parse(event.data);
+//   // if (usersJson.usersList) {
+//     // getUsersList(usersJson.usersList);
+//   // } else {
+//     receiveMessage(event.data);
+//   // }
+// };
 
-socket.onopen = function() {
-  console.log("Соединение установлено.");
-};
+// socket.onerror = function(error) {
+//   alert("Ошибка " + error.message);
+// };
 
-socket.onclose = function() {
-  console.log("Соединение закрыто.");
-};
-
-socket.onmessage = function(event, list) {
-  // let usersJson = JSON.parse(event.data);
-  // if (usersJson.usersList) {
-    // getUsersList(usersJson.usersList);
-  // } else {
-    receiveMessage(event.data);
-  // }
-};
-
-socket.onerror = function(error) {
-  alert("Ошибка " + error.message);
-};
+export function authentificate (cond) {
+  return {
+    type: LOG_IN,
+    cond
+  }
+}
 
 export function userJoin (user) {
   return {

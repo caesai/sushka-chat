@@ -1,0 +1,35 @@
+.loginForm {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 4px 3px 0 rgba(0, 0, 0, 0.13);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 15px;
+
+  input {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  button {
+    margin-bottom: 15px;
+    padding: 5px;
+    background-color: #dcd9d9;
+    font-size: 18px;
+    border: 1px solid #c3c0c0;
+    cursor: pointer;
+    transition: 0.2s ease-out 0.1s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}

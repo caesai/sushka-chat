@@ -1,9 +1,19 @@
 var webpack = require('webpack');
 var path = require('path');
 var buildPath = path.resolve(__dirname, 'assets');
-var fs = require('fs');
+// var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractSCSS = new ExtractTextPlugin('[name].css');
+var config = new Map();
+
+config.set('vendor_dependencies', [
+  'history',
+  'react',
+  'react-redux',
+  'react-router',
+  'redux',
+  'redux-router'
+]);
 
 module.exports =
 {
@@ -21,7 +31,7 @@ module.exports =
 
     resolve: {
         extensions: [
-            '.jsx', '.js',
+            '.js',
             '.json',
             '.html',
             '.css', '.scss'
@@ -33,7 +43,7 @@ module.exports =
         loaders: [
             // Compile es6 to js.
             {
-                test: /.*\.jsx?$/,
+                test: /.*\.js?$/,
                 loaders: [
                     'babel-loader'
                 ],
@@ -42,7 +52,7 @@ module.exports =
 
             {
                 test: /\.scss$/,
-                loaders: extractSCSS.extract(["css-loader?sourceMap&minimize&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]","resolve-url-loader","sass-loader?sourceMap"])
+                loaders: extractSCSS.extract(['css-loader?sourceMap&minimize&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]','resolve-url-loader','sass-loader?sourceMap'])
             },
             // {
             //     test: /\.css$/,
@@ -51,17 +61,17 @@ module.exports =
 
             // // Fonts
             { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
+            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
         ]
     },
-    devServer: {
-      hot: true
-    },
+    // devServer: {
+    //   hot: true
+    // },
     plugins: [
       extractSCSS,
       // new webpack.ProvidePlugin({
       // }),
-      new webpack.HotModuleReplacementPlugin(),
+      new webpack.HotModuleReplacementPlugin()
       // new webpack.NoErrorsPlugin()
     ]
 
