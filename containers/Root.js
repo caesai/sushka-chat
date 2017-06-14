@@ -4,7 +4,9 @@ import routes from '../routes';
 import {ReduxRouter} from 'redux-router';
 
 export default class Root extends React.Component {
-
+  componentDidMount(){
+    console.log(routes);
+  }
   render(){
     return (
       <div>
