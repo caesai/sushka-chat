@@ -3,7 +3,7 @@ import React, { Component, ReactDOM } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import * as styles from './scss/login.scss';
+import * as styles from '../scss/login.scss';
 
 const mapStateToProps = (state) => ({
   isAuthenticated   : state.auth.isAuthenticated

@@ -1,14 +1,15 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 
-import Login from '../Login';
-import Chat from '../Chat';
-import Register from '../Register';
+import {App} from '../containers/App';
+import {Login} from '../containers/Login';
+import {Chat} from '../containers/Chat';
+import {Register} from '../containers/Register';
 
 export default (
-   <Route path='/' component={Login}>
+   <Route path='/' component={App}>
       <IndexRoute component={Chat} />
       <Route path='/register' component={Register} />
-      // <Route path='/register' component={Register} />
+      <Route path='/login' component={Login} />
    </Route>
 )

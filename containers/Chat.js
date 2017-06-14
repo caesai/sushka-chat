@@ -1,11 +1,11 @@
 import React from 'react';
-import MainBox from './components/MainBox';
-import UsersList from './components/UsersList';
-import UserProfile from './components/UserProfile';
-import * as actions from './actions/actions';
+import MainBox from '../components/MainBox';
+import UsersList from '../components/UsersList';
+import UserProfile from '../components/UserProfile';
+import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
-import store from './store/store';
-import * as styles from './scss/main.scss';
+import store from '../store/store';
+import * as styles from '../scss/main.scss';
 
 // VK.Widgets.Auth("vk_auth", {
     // width: "200px",
@@ -30,8 +30,8 @@ let userInfo = {
     ]
 };
 
-store.dispatch(actions.userJoin());
-store.dispatch(actions.userInfo(userInfo));
+// store.dispatch(actions.userJoin());
+// store.dispatch(actions.userInfo(userInfo));
 
 
 export default class Chat extends React.Component {
