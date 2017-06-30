@@ -8,6 +8,7 @@ db.setUpConnection();
 const app = express();
 
 app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -25,8 +26,13 @@ app.post('/user', (req, res)=>{
 });
 
 app.post('/login', (req, res) => {
-  res.header('Access-Control-Allow-Headers', '*');
-  res.sendStatus(200);
+  let acccessResponse = {
+      "access": "failed"
+  };
+  if ((req.body.email == 'admin') &&(req.body.password == 'admin')) {
+    acccessResponse.access = 'granted';
+  }
+  res.send(acccessResponse);
 });
 
 app.listen(8080, ()=>{
