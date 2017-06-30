@@ -9,12 +9,24 @@ const app = express();
 
 app.use( bodyParser.json() );
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+  next();
+});
+
 app.get('/user', (req, res)=>{
   db.usersList().then(data => res.send(data));
 });
 
 app.post('/user', (req, res)=>{
   db.createUser(req.body).then(data => res.send(data));
+});
+
+app.post('/login', (req, res) => {
+  res.header('Access-Control-Allow-Headers', '*');
+  res.sendStatus(200);
 });
 
 app.listen(8080, ()=>{

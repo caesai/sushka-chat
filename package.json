@@ -68,7 +68,9 @@
   "scripts": {
     "FIXFIX": "webpack --progress --profile --colors --display-error-details --display-cached",
     "start": "concurrently 'webpack-dev-server --colors --progress --hot --port 8081' 'node serverEntryPrototype.js'",
-    "dev": "concurrently 'webpack-dev-server --colors --progress --hot --port 8081' 'babel-node ./Api/index.js'"
+    "dev": "concurrently 'webpack-dev-server --colors --progress --hot --port 8081' 'babel-node ./Api/index.js'",
+    "wpack": "webpack-dev-server --colors --progress --hot --port 8081",
+    "serv": "babel-node ./Api/index.js"
   },
   "author": "sushkazzlo",
   "license": "ISC"
